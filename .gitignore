@@ -3,3 +3,6 @@ credentials.json
 token.json
 *.json
 .env
+password.txt
+*password.txt
+cookies.txt
