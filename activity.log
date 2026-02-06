@@ -1,0 +1,470 @@
+2025-08-02 13:41:53,645 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-08-02 13:41:53,646 - [33mPress CTRL+C to quit[0m
+2025-08-02 13:41:53,646 -  * Restarting with stat
+2025-08-02 13:41:53,764 -  * Debugger is active!
+2025-08-02 13:41:53,775 -  * Debugger PIN: 108-164-468
+2025-08-02 13:43:16,906 - 127.0.0.1 - - [02/Aug/2025 13:43:16] "GET /login HTTP/1.1" 200 -
+2025-08-02 13:43:26,526 - Action: Admin login successful
+2025-08-02 13:43:26,531 - 127.0.0.1 - - [02/Aug/2025 13:43:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-08-02 13:43:26,539 - 127.0.0.1 - - [02/Aug/2025 13:43:26] "GET /admin HTTP/1.1" 200 -
+2025-08-02 13:43:45,572 - 127.0.0.1 - - [02/Aug/2025 13:43:45] "GET /admin/calendar HTTP/1.1" 200 -
+2025-08-02 13:43:45,618 - 127.0.0.1 - - [02/Aug/2025 13:43:45] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 13:44:13,816 - Action: Email booking processed: {'type': 'gmail', 'start': '14:30', 'end': '15:30'}
+2025-08-02 13:44:13,817 - 127.0.0.1 - - [02/Aug/2025 13:44:13] "POST /api/process_email HTTP/1.1" 200 -
+2025-08-02 13:44:15,334 - 127.0.0.1 - - [02/Aug/2025 13:44:15] "GET /admin HTTP/1.1" 200 -
+2025-08-02 13:44:21,725 - 127.0.0.1 - - [02/Aug/2025 13:44:21] "GET /admin/calendar HTTP/1.1" 200 -
+2025-08-02 13:44:21,751 - 127.0.0.1 - - [02/Aug/2025 13:44:21] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 13:44:29,684 - 127.0.0.1 - - [02/Aug/2025 13:44:29] "[32mGET /admin HTTP/1.1[0m" 302 -
+2025-08-02 13:44:29,696 - 127.0.0.1 - - [02/Aug/2025 13:44:29] "GET /login HTTP/1.1" 200 -
+2025-08-02 13:44:30,928 - 127.0.0.1 - - [02/Aug/2025 13:44:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-02 13:47:43,799 - 127.0.0.1 - - [02/Aug/2025 13:47:43] "GET /admin/calendar HTTP/1.1" 200 -
+2025-08-02 13:47:43,859 - 127.0.0.1 - - [02/Aug/2025 13:47:43] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 13:57:20,329 - 127.0.0.1 - - [02/Aug/2025 13:57:20] "GET /admin/calendar HTTP/1.1" 200 -
+2025-08-02 13:57:20,375 - 127.0.0.1 - - [02/Aug/2025 13:57:20] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 13:57:34,725 - 127.0.0.1 - - [02/Aug/2025 13:57:34] "GET / HTTP/1.1" 200 -
+2025-08-02 13:57:34,865 - 127.0.0.1 - - [02/Aug/2025 13:57:34] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 14:00:56,560 - 127.0.0.1 - - [02/Aug/2025 14:00:56] "GET / HTTP/1.1" 200 -
+2025-08-02 14:00:56,594 - 127.0.0.1 - - [02/Aug/2025 14:00:56] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 14:01:00,049 - 127.0.0.1 - - [02/Aug/2025 14:01:00] "GET / HTTP/1.1" 200 -
+2025-08-02 14:01:00,076 - 127.0.0.1 - - [02/Aug/2025 14:01:00] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 14:01:01,659 - 127.0.0.1 - - [02/Aug/2025 14:01:01] "GET / HTTP/1.1" 200 -
+2025-08-02 14:01:01,671 - 127.0.0.1 - - [02/Aug/2025 14:01:01] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 14:01:02,354 - 127.0.0.1 - - [02/Aug/2025 14:01:02] "GET / HTTP/1.1" 200 -
+2025-08-02 14:01:02,363 - 127.0.0.1 - - [02/Aug/2025 14:01:02] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 14:01:02,556 - 127.0.0.1 - - [02/Aug/2025 14:01:02] "GET / HTTP/1.1" 200 -
+2025-08-02 14:01:02,568 - 127.0.0.1 - - [02/Aug/2025 14:01:02] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 14:01:02,722 - 127.0.0.1 - - [02/Aug/2025 14:01:02] "GET / HTTP/1.1" 200 -
+2025-08-02 14:01:02,728 - 127.0.0.1 - - [02/Aug/2025 14:01:02] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 15:04:42,043 - 127.0.0.1 - - [02/Aug/2025 15:04:42] "GET /admin/calendar HTTP/1.1" 200 -
+2025-08-02 15:04:42,321 - 127.0.0.1 - - [02/Aug/2025 15:04:42] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 15:04:55,197 - 127.0.0.1 - - [02/Aug/2025 15:04:55] "GET / HTTP/1.1" 200 -
+2025-08-02 15:04:55,781 - 127.0.0.1 - - [02/Aug/2025 15:04:55] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 15:05:22,647 - Action: Manual reservation added: {'date': '2025-08-02', 'type': 'charter', 'start': '10:00', 'end': '12:00'}
+2025-08-02 15:05:22,649 - 127.0.0.1 - - [02/Aug/2025 15:05:22] "POST /api/reservations HTTP/1.1" 200 -
+2025-08-02 15:05:22,653 - 127.0.0.1 - - [02/Aug/2025 15:05:22] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 15:05:28,142 - Action: Reservation deleted: {'date': '2025-08-02', 'type': 'charter', 'start': '10:00', 'end': '12:00'}
+2025-08-02 15:05:28,143 - 127.0.0.1 - - [02/Aug/2025 15:05:28] "POST /api/reservations/delete HTTP/1.1" 200 -
+2025-08-02 15:05:28,146 - 127.0.0.1 - - [02/Aug/2025 15:05:28] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 15:09:59,493 - 127.0.0.1 - - [02/Aug/2025 15:09:59] "GET /admin/calendar HTTP/1.1" 200 -
+2025-08-02 15:09:59,621 - 127.0.0.1 - - [02/Aug/2025 15:09:59] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 15:10:12,867 - 127.0.0.1 - - [02/Aug/2025 15:10:12] "GET /admin HTTP/1.1" 200 -
+2025-08-02 15:15:35,119 - 127.0.0.1 - - [02/Aug/2025 15:15:35] "GET / HTTP/1.1" 200 -
+2025-08-02 15:15:35,168 - 127.0.0.1 - - [02/Aug/2025 15:15:35] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 15:15:37,137 - 127.0.0.1 - - [02/Aug/2025 15:15:37] "GET / HTTP/1.1" 200 -
+2025-08-02 15:15:37,149 - 127.0.0.1 - - [02/Aug/2025 15:15:37] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 17:33:55,877 - 127.0.0.1 - - [02/Aug/2025 17:33:55] "GET / HTTP/1.1" 200 -
+2025-08-02 17:33:55,937 - 127.0.0.1 - - [02/Aug/2025 17:33:55] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 17:33:57,476 - 127.0.0.1 - - [02/Aug/2025 17:33:57] "GET / HTTP/1.1" 200 -
+2025-08-02 17:33:57,496 - 127.0.0.1 - - [02/Aug/2025 17:33:57] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 17:34:04,981 - 127.0.0.1 - - [02/Aug/2025 17:34:04] "GET / HTTP/1.1" 200 -
+2025-08-02 17:34:04,997 - 127.0.0.1 - - [02/Aug/2025 17:34:04] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 17:34:21,490 - 127.0.0.1 - - [02/Aug/2025 17:34:21] "GET / HTTP/1.1" 200 -
+2025-08-02 17:34:21,648 - 127.0.0.1 - - [02/Aug/2025 17:34:21] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 17:34:24,972 - 127.0.0.1 - - [02/Aug/2025 17:34:24] "GET /admin HTTP/1.1" 200 -
+2025-08-02 17:43:24,391 -  * Detected change in '/Users/aceboy/booking_system/app.py', reloading
+2025-08-02 17:43:24,447 -  * Restarting with stat
+2025-08-02 17:43:24,702 -  * Debugger is active!
+2025-08-02 17:43:24,714 -  * Debugger PIN: 108-164-468
+2025-08-02 17:48:37,321 - Action: Admin login successful
+2025-08-02 17:48:37,324 - 127.0.0.1 - - [02/Aug/2025 17:48:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-08-02 17:48:37,341 - 127.0.0.1 - - [02/Aug/2025 17:48:37] "GET /admin HTTP/1.1" 200 -
+2025-08-02 17:48:56,653 - 127.0.0.1 - - [02/Aug/2025 17:48:56] "GET / HTTP/1.1" 200 -
+2025-08-02 17:48:56,768 - 127.0.0.1 - - [02/Aug/2025 17:48:56] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-02 17:49:06,059 - 127.0.0.1 - - [02/Aug/2025 17:49:06] "GET /admin/calendar HTTP/1.1" 200 -
+2025-08-02 17:49:06,166 - 127.0.0.1 - - [02/Aug/2025 17:49:06] "GET /api/reservations HTTP/1.1" 200 -
+2025-08-24 15:59:41,306 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-08-24 15:59:41,306 - [33mPress CTRL+C to quit[0m
+2025-08-24 15:59:41,307 -  * Restarting with stat
+2025-08-24 15:59:41,422 -  * Debugger is active!
+2025-08-24 15:59:41,429 -  * Debugger PIN: 108-164-468
+2025-08-31 23:08:56,041 - 127.0.0.1 - - [31/Aug/2025 23:08:56] "GET /login HTTP/1.1" 200 -
+2025-08-31 23:08:57,152 - 127.0.0.1 - - [31/Aug/2025 23:08:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-31 23:08:58,457 - Action: Admin login successful
+2025-08-31 23:08:58,461 - 127.0.0.1 - - [31/Aug/2025 23:08:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-08-31 23:08:58,471 - 127.0.0.1 - - [31/Aug/2025 23:08:58] "GET /admin HTTP/1.1" 200 -
+2025-08-31 23:09:02,157 - 127.0.0.1 - - [31/Aug/2025 23:09:02] "GET /admin/calendar HTTP/1.1" 200 -
+2025-08-31 23:09:02,241 - 127.0.0.1 - - [31/Aug/2025 23:09:02] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-01 11:39:32,009 - 127.0.0.1 - - [01/Sep/2025 11:39:32] "GET /admin HTTP/1.1" 200 -
+2025-09-01 11:39:34,997 - 127.0.0.1 - - [01/Sep/2025 11:39:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-01 14:03:30,662 - 127.0.0.1 - - [01/Sep/2025 14:03:30] "GET /admin/calendar HTTP/1.1" 200 -
+2025-09-01 14:03:30,767 - 127.0.0.1 - - [01/Sep/2025 14:03:30] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-01 14:03:33,495 - 127.0.0.1 - - [01/Sep/2025 14:03:33] "GET / HTTP/1.1" 200 -
+2025-09-01 14:03:33,558 - 127.0.0.1 - - [01/Sep/2025 14:03:33] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-01 14:03:44,205 - Action: Manual reservation added: {'date': '2025-09-01', 'type': 'manual', 'start': '19:30', 'end': '20:30'}
+2025-09-01 14:03:44,206 - 127.0.0.1 - - [01/Sep/2025 14:03:44] "POST /api/reservations HTTP/1.1" 200 -
+2025-09-01 14:03:44,217 - 127.0.0.1 - - [01/Sep/2025 14:03:44] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-01 14:03:53,892 - 127.0.0.1 - - [01/Sep/2025 14:03:53] "GET / HTTP/1.1" 200 -
+2025-09-01 14:03:53,931 - 127.0.0.1 - - [01/Sep/2025 14:03:53] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-01 14:16:08,503 - 127.0.0.1 - - [01/Sep/2025 14:16:08] "GET /admin/calendar HTTP/1.1" 200 -
+2025-09-01 14:16:09,337 - 127.0.0.1 - - [01/Sep/2025 14:16:09] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-01 14:16:19,355 - Action: Admin logout
+2025-09-01 14:16:19,360 - 127.0.0.1 - - [01/Sep/2025 14:16:19] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-09-01 14:16:19,366 - 127.0.0.1 - - [01/Sep/2025 14:16:19] "GET /login HTTP/1.1" 200 -
+2025-09-01 14:16:22,627 - Action: Admin login successful
+2025-09-01 14:16:22,629 - 127.0.0.1 - - [01/Sep/2025 14:16:22] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-01 14:16:22,636 - 127.0.0.1 - - [01/Sep/2025 14:16:22] "GET /admin HTTP/1.1" 200 -
+2025-09-01 14:16:33,566 - 127.0.0.1 - - [01/Sep/2025 14:16:33] "GET /admin/calendar HTTP/1.1" 200 -
+2025-09-01 14:16:33,630 - 127.0.0.1 - - [01/Sep/2025 14:16:33] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 16:43:50,333 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-09-24 16:43:50,333 - [33mPress CTRL+C to quit[0m
+2025-09-24 16:43:50,333 -  * Restarting with stat
+2025-09-24 16:43:50,481 -  * Debugger is active!
+2025-09-24 16:43:50,488 -  * Debugger PIN: 108-164-468
+2025-09-24 16:45:43,274 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2025-09-24 16:45:43,274 - [33mPress CTRL+C to quit[0m
+2025-09-24 16:45:43,275 -  * Restarting with stat
+2025-09-24 16:45:43,427 -  * Debugger is active!
+2025-09-24 16:45:43,435 -  * Debugger PIN: 108-164-468
+2025-09-24 16:46:16,538 - 127.0.0.1 - - [24/Sep/2025 16:46:16] "GET / HTTP/1.1" 200 -
+2025-09-24 16:46:16,804 - 127.0.0.1 - - [24/Sep/2025 16:46:16] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 16:46:18,509 - 127.0.0.1 - - [24/Sep/2025 16:46:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-24 16:46:32,258 - 127.0.0.1 - - [24/Sep/2025 16:46:32] "GET / HTTP/1.1" 200 -
+2025-09-24 16:46:32,488 - 127.0.0.1 - - [24/Sep/2025 16:46:32] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 16:57:55,506 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5002
+2025-09-24 16:57:55,506 - [33mPress CTRL+C to quit[0m
+2025-09-24 16:57:55,507 -  * Restarting with stat
+2025-09-24 16:57:55,651 -  * Debugger is active!
+2025-09-24 16:57:55,659 -  * Debugger PIN: 108-164-468
+2025-09-24 16:58:08,020 - 127.0.0.1 - - [24/Sep/2025 16:58:08] "GET / HTTP/1.1" 200 -
+2025-09-24 16:58:08,434 - 127.0.0.1 - - [24/Sep/2025 16:58:08] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 16:58:10,183 - 127.0.0.1 - - [24/Sep/2025 16:58:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-24 17:00:23,148 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 17:00:23,190 -  * Restarting with stat
+2025-09-24 17:00:23,462 -  * Debugger is active!
+2025-09-24 17:00:23,470 -  * Debugger PIN: 108-164-468
+2025-09-24 17:00:54,758 - 127.0.0.1 - - [24/Sep/2025 17:00:54] "GET / HTTP/1.1" 200 -
+2025-09-24 17:00:54,875 - 127.0.0.1 - - [24/Sep/2025 17:00:54] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 17:02:32,567 - 127.0.0.1 - - [24/Sep/2025 17:02:32] "GET /login HTTP/1.1" 200 -
+2025-09-24 17:03:12,326 - Action: Admin login successful
+2025-09-24 17:03:12,330 - 127.0.0.1 - - [24/Sep/2025 17:03:12] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-24 17:03:12,345 - 127.0.0.1 - - [24/Sep/2025 17:03:12] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:03:17,749 - 127.0.0.1 - - [24/Sep/2025 17:03:17] "GET /admin/calendar HTTP/1.1" 200 -
+2025-09-24 17:03:17,836 - 127.0.0.1 - - [24/Sep/2025 17:03:17] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 17:04:19,430 - 127.0.0.1 - - [24/Sep/2025 17:04:19] "GET / HTTP/1.1" 200 -
+2025-09-24 17:04:19,492 - 127.0.0.1 - - [24/Sep/2025 17:04:19] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 17:09:07,688 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 17:09:07,742 -  * Restarting with stat
+2025-09-24 17:09:08,226 -  * Debugger is active!
+2025-09-24 17:09:08,235 -  * Debugger PIN: 108-164-468
+2025-09-24 17:09:28,011 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 17:09:28,068 -  * Restarting with stat
+2025-09-24 17:09:28,461 -  * Debugger is active!
+2025-09-24 17:09:28,470 -  * Debugger PIN: 108-164-468
+2025-09-24 17:27:45,818 - 127.0.0.1 - - [24/Sep/2025 17:27:45] "[32mGET /admin HTTP/1.1[0m" 302 -
+2025-09-24 17:27:45,844 - 127.0.0.1 - - [24/Sep/2025 17:27:45] "GET /login HTTP/1.1" 200 -
+2025-09-24 17:27:46,020 - 127.0.0.1 - - [24/Sep/2025 17:27:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-24 17:27:59,219 - Action: Admin login failed
+2025-09-24 17:27:59,223 - 127.0.0.1 - - [24/Sep/2025 17:27:59] "POST /login HTTP/1.1" 200 -
+2025-09-24 17:28:05,958 - Action: Admin login failed
+2025-09-24 17:28:05,969 - 127.0.0.1 - - [24/Sep/2025 17:28:05] "POST /login HTTP/1.1" 200 -
+2025-09-24 17:29:02,945 - Action: Admin login successful
+2025-09-24 17:29:02,952 - 127.0.0.1 - - [24/Sep/2025 17:29:02] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-24 17:29:02,967 - 127.0.0.1 - - [24/Sep/2025 17:29:02] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:29:08,113 - file_cache is only supported with oauth2client<4.0.0
+2025-09-24 17:29:10,374 - Action: Gmail sync added: 2025-09-24 16:30-17:30 (charter)
+2025-09-24 17:29:10,374 - Action: Gmail sync added: 2025-09-26 13:30-14:30 (gmail)
+2025-09-24 17:29:10,374 - Action: Gmail sync added: 2025-09-24 14:00-15:00 (gmail)
+2025-09-24 17:29:10,375 - Action: Gmail sync added: 2025-09-23 17:00-18:00 (charter)
+2025-09-24 17:29:10,375 - Action: Gmail sync added: 2025-10-04 15:00-16:00 (gmail)
+2025-09-24 17:29:10,375 - Action: Gmail sync added: 2025-10-31 19:30-21:00 (gmail)
+2025-09-24 17:29:10,375 - Action: Gmail sync added: 2025-10-26 14:00-15:30 (gmail)
+2025-09-24 17:29:10,375 - Action: Gmail sync added: 2025-10-24 19:30-21:00 (gmail)
+2025-09-24 17:29:10,375 - Action: Gmail sync added: 2025-10-19 14:00-15:30 (gmail)
+2025-09-24 17:29:10,377 - 127.0.0.1 - - [24/Sep/2025 17:29:10] "POST /api/gmail/sync HTTP/1.1" 200 -
+2025-09-24 17:29:12,405 - 127.0.0.1 - - [24/Sep/2025 17:29:12] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:29:15,380 - 127.0.0.1 - - [24/Sep/2025 17:29:15] "GET / HTTP/1.1" 200 -
+2025-09-24 17:29:15,402 - 127.0.0.1 - - [24/Sep/2025 17:29:15] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 17:29:57,360 - 127.0.0.1 - - [24/Sep/2025 17:29:57] "GET /admin/calendar HTTP/1.1" 200 -
+2025-09-24 17:29:57,500 - 127.0.0.1 - - [24/Sep/2025 17:29:57] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 17:31:49,104 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:31:49,219 -  * Restarting with stat
+2025-09-24 17:31:49,606 -  * Debugger is active!
+2025-09-24 17:31:49,623 -  * Debugger PIN: 108-164-468
+2025-09-24 17:32:00,176 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:32:00,217 -  * Restarting with stat
+2025-09-24 17:32:00,596 -  * Debugger is active!
+2025-09-24 17:32:00,615 -  * Debugger PIN: 108-164-468
+2025-09-24 17:32:35,553 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 17:32:35,598 -  * Restarting with stat
+2025-09-24 17:32:36,244 -  * Debugger is active!
+2025-09-24 17:32:36,252 -  * Debugger PIN: 108-164-468
+2025-09-24 17:32:44,510 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 17:32:44,589 -  * Restarting with stat
+2025-09-24 17:32:45,034 -  * Debugger is active!
+2025-09-24 17:32:45,041 -  * Debugger PIN: 108-164-468
+2025-09-24 17:33:12,836 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 17:33:12,890 -  * Restarting with stat
+2025-09-24 17:33:13,252 -  * Debugger is active!
+2025-09-24 17:33:13,259 -  * Debugger PIN: 108-164-468
+2025-09-24 17:34:54,924 - 127.0.0.1 - - [24/Sep/2025 17:34:54] "[32mGET /admin/calendar HTTP/1.1[0m" 302 -
+2025-09-24 17:34:54,942 - 127.0.0.1 - - [24/Sep/2025 17:34:54] "GET /login HTTP/1.1" 200 -
+2025-09-24 17:34:57,319 - Action: Admin login successful
+2025-09-24 17:34:57,321 - 127.0.0.1 - - [24/Sep/2025 17:34:57] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-24 17:34:57,334 - 127.0.0.1 - - [24/Sep/2025 17:34:57] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:34:57,541 - 127.0.0.1 - - [24/Sep/2025 17:34:57] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:34:59,326 - file_cache is only supported with oauth2client<4.0.0
+2025-09-24 17:35:01,774 - Action: Gmail sync added: 2025-09-24 16:30-17:30 (charter) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:35:01,774 - Action: Gmail sync added: 2025-09-26 13:30-14:30 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:35:01,774 - Action: Gmail sync cancellation failed (not found): 2025-09-24 14:00-15:00 (gmail) - 件名: hallel 予約キャンセル
+2025-09-24 17:35:01,774 - Action: Gmail sync added: 2025-09-24 14:00-15:00 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:35:01,774 - Action: Gmail sync added: 2025-09-23 17:00-18:00 (charter) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:35:01,774 - Action: Gmail sync added: 2025-10-04 15:00-16:00 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:35:01,774 - Action: Gmail sync added: 2025-10-31 19:30-21:00 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:35:01,774 - Action: Gmail sync added: 2025-10-26 14:00-15:30 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:35:01,774 - Action: Gmail sync added: 2025-10-24 19:30-21:00 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:35:01,774 - Action: Gmail sync added: 2025-10-19 14:00-15:30 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:35:01,774 - 127.0.0.1 - - [24/Sep/2025 17:35:01] "POST /api/gmail/sync HTTP/1.1" 200 -
+2025-09-24 17:35:03,815 - 127.0.0.1 - - [24/Sep/2025 17:35:03] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:35:04,045 - 127.0.0.1 - - [24/Sep/2025 17:35:04] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:35:14,286 - 127.0.0.1 - - [24/Sep/2025 17:35:14] "GET /admin/calendar HTTP/1.1" 200 -
+2025-09-24 17:35:14,380 - 127.0.0.1 - - [24/Sep/2025 17:35:14] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 17:42:52,515 - 127.0.0.1 - - [24/Sep/2025 17:42:52] "GET /admin/calendar HTTP/1.1" 200 -
+2025-09-24 17:42:52,639 - 127.0.0.1 - - [24/Sep/2025 17:42:52] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 17:43:10,073 - file_cache is only supported with oauth2client<4.0.0
+2025-09-24 17:43:12,270 - Action: Gmail sync skipped (duplicate): 2025-09-24 16:30-17:30 (charter) - 件名: hallel 予約完了メール
+2025-09-24 17:43:12,270 - Action: Gmail sync skipped (duplicate): 2025-09-26 13:30-14:30 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:43:12,270 - Action: Gmail sync cancelled: 2025-09-24 14:00-15:00 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約キャンセル
+2025-09-24 17:43:12,270 - Action: Gmail sync added: 2025-09-24 14:00-15:00 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:43:12,270 - Action: Gmail sync skipped (duplicate): 2025-09-23 17:00-18:00 (charter) - 件名: hallel 予約完了メール
+2025-09-24 17:43:12,270 - Action: Gmail sync skipped (duplicate): 2025-10-04 15:00-16:00 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:43:12,271 - Action: Gmail sync skipped (duplicate): 2025-10-31 19:30-21:00 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:43:12,271 - Action: Gmail sync skipped (duplicate): 2025-10-26 14:00-15:30 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:43:12,271 - Action: Gmail sync skipped (duplicate): 2025-10-24 19:30-21:00 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:43:12,271 - Action: Gmail sync skipped (duplicate): 2025-10-19 14:00-15:30 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:43:12,272 - 127.0.0.1 - - [24/Sep/2025 17:43:12] "POST /api/gmail/sync HTTP/1.1" 200 -
+2025-09-24 17:43:14,300 - 127.0.0.1 - - [24/Sep/2025 17:43:14] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:43:14,397 - 127.0.0.1 - - [24/Sep/2025 17:43:14] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:46:03,573 - 127.0.0.1 - - [24/Sep/2025 17:46:03] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:46:03,794 - 127.0.0.1 - - [24/Sep/2025 17:46:03] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:46:05,538 - file_cache is only supported with oauth2client<4.0.0
+2025-09-24 17:46:07,719 - Action: Gmail sync skipped (duplicate): 2025-09-24 16:30-17:30 (charter) - 件名: hallel 予約完了メール
+2025-09-24 17:46:07,720 - Action: Gmail sync skipped (duplicate): 2025-09-26 13:30-14:30 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:46:07,720 - Action: Gmail sync cancelled: 2025-09-24 14:00-15:00 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約キャンセル
+2025-09-24 17:46:07,720 - Action: Gmail sync added: 2025-09-24 14:00-15:00 (gmail) - 送信者: hallel <noreply@em.hacomono.jp> - 件名: hallel 予約完了メール
+2025-09-24 17:46:07,720 - Action: Gmail sync skipped (duplicate): 2025-09-23 17:00-18:00 (charter) - 件名: hallel 予約完了メール
+2025-09-24 17:46:07,720 - Action: Gmail sync skipped (duplicate): 2025-10-04 15:00-16:00 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:46:07,721 - Action: Gmail sync skipped (duplicate): 2025-10-31 19:30-21:00 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:46:07,721 - Action: Gmail sync skipped (duplicate): 2025-10-26 14:00-15:30 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:46:07,721 - Action: Gmail sync skipped (duplicate): 2025-10-24 19:30-21:00 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:46:07,721 - Action: Gmail sync skipped (duplicate): 2025-10-19 14:00-15:30 (gmail) - 件名: hallel 予約完了メール
+2025-09-24 17:46:07,722 - 127.0.0.1 - - [24/Sep/2025 17:46:07] "POST /api/gmail/sync HTTP/1.1" 200 -
+2025-09-24 17:46:09,752 - 127.0.0.1 - - [24/Sep/2025 17:46:09] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:46:09,888 - 127.0.0.1 - - [24/Sep/2025 17:46:09] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:46:19,449 - 127.0.0.1 - - [24/Sep/2025 17:46:19] "GET / HTTP/1.1" 200 -
+2025-09-24 17:46:19,533 - 127.0.0.1 - - [24/Sep/2025 17:46:19] "GET /api/reservations HTTP/1.1" 200 -
+2025-09-24 17:46:48,034 - 127.0.0.1 - - [24/Sep/2025 17:46:48] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:46:49,027 - 127.0.0.1 - - [24/Sep/2025 17:46:49] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:48:34,658 - 127.0.0.1 - - [24/Sep/2025 17:48:34] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:48:34,771 - 127.0.0.1 - - [24/Sep/2025 17:48:34] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:50:00,143 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:50:00,341 -  * Restarting with stat
+2025-09-24 17:50:00,731 -  * Debugger is active!
+2025-09-24 17:50:00,742 -  * Debugger PIN: 108-164-468
+2025-09-24 17:50:13,596 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:50:13,652 -  * Restarting with stat
+2025-09-24 17:50:13,978 -  * Debugger is active!
+2025-09-24 17:50:13,984 -  * Debugger PIN: 108-164-468
+2025-09-24 17:51:35,537 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 17:51:35,585 -  * Restarting with stat
+2025-09-24 17:51:35,919 -  * Debugger is active!
+2025-09-24 17:51:35,926 -  * Debugger PIN: 108-164-468
+2025-09-24 17:51:40,132 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 17:51:40,162 -  * Restarting with stat
+2025-09-24 17:51:40,375 -  * Debugger is active!
+2025-09-24 17:51:40,379 -  * Debugger PIN: 108-164-468
+2025-09-24 17:51:48,506 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 17:51:48,546 -  * Restarting with stat
+2025-09-24 17:51:48,788 -  * Debugger is active!
+2025-09-24 17:51:48,793 -  * Debugger PIN: 108-164-468
+2025-09-24 17:52:39,178 - 127.0.0.1 - - [24/Sep/2025 17:52:39] "GET /login HTTP/1.1" 200 -
+2025-09-24 17:52:40,194 - 127.0.0.1 - - [24/Sep/2025 17:52:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-24 17:52:52,474 - 127.0.0.1 - - [24/Sep/2025 17:52:52] "[32mGET /admin HTTP/1.1[0m" 302 -
+2025-09-24 17:52:52,482 - 127.0.0.1 - - [24/Sep/2025 17:52:52] "GET /login HTTP/1.1" 200 -
+2025-09-24 17:52:54,898 - Action: Admin login successful
+2025-09-24 17:52:54,900 - 127.0.0.1 - - [24/Sep/2025 17:52:54] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-24 17:52:54,918 - 127.0.0.1 - - [24/Sep/2025 17:52:54] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:52:55,084 - 127.0.0.1 - - [24/Sep/2025 17:52:55] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:52:56,868 - file_cache is only supported with oauth2client<4.0.0
+2025-09-24 17:52:59,187 - Action: Gmail sync added: 2025-09-24 16:30-17:30 (charter) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 17:52:59,187 - Action: Gmail sync added: 2025-09-26 13:30-14:30 (gmail) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 17:52:59,187 - Action: Gmail sync cancellation failed (not found): 2025-09-24 14:00-15:00 (gmail) - 件名: hallel 予約キャンセル
+2025-09-24 17:52:59,187 - Action: Gmail sync added: 2025-09-24 14:00-15:00 (gmail) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 17:52:59,187 - Action: Gmail sync added: 2025-09-23 17:00-18:00 (charter) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 17:52:59,187 - Action: Gmail sync added: 2025-10-04 15:00-16:00 (gmail) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 17:52:59,187 - Action: Gmail sync added: 2025-10-31 19:30-21:00 (gmail) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 17:52:59,187 - Action: Gmail sync added: 2025-10-26 14:00-15:30 (gmail) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 17:52:59,187 - Action: Gmail sync added: 2025-10-24 19:30-21:00 (gmail) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 17:52:59,187 - Action: Gmail sync added: 2025-10-19 14:00-15:30 (gmail) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 17:52:59,188 - 127.0.0.1 - - [24/Sep/2025 17:52:59] "POST /api/gmail/sync HTTP/1.1" 200 -
+2025-09-24 17:53:01,221 - 127.0.0.1 - - [24/Sep/2025 17:53:01] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:53:01,289 - 127.0.0.1 - - [24/Sep/2025 17:53:01] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:53:36,450 - Action: Admin login successful
+2025-09-24 17:53:36,454 - 127.0.0.1 - - [24/Sep/2025 17:53:36] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-24 17:53:36,459 - 127.0.0.1 - - [24/Sep/2025 17:53:36] "GET /admin HTTP/1.1" 200 -
+2025-09-24 17:53:36,588 - 127.0.0.1 - - [24/Sep/2025 17:53:36] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 17:55:58,160 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:55:58,226 -  * Restarting with stat
+2025-09-24 17:55:58,585 -  * Debugger is active!
+2025-09-24 17:55:58,592 -  * Debugger PIN: 108-164-468
+2025-09-24 17:57:04,926 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:57:05,009 -  * Restarting with stat
+2025-09-24 17:57:05,377 -  * Debugger is active!
+2025-09-24 17:57:05,384 -  * Debugger PIN: 108-164-468
+2025-09-24 17:57:22,392 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:57:22,428 -  * Restarting with stat
+2025-09-24 17:57:22,721 -  * Debugger is active!
+2025-09-24 17:57:22,727 -  * Debugger PIN: 108-164-468
+2025-09-24 17:57:46,645 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:57:46,685 -  * Restarting with stat
+2025-09-24 17:57:46,932 -  * Debugger is active!
+2025-09-24 17:57:46,937 -  * Debugger PIN: 108-164-468
+2025-09-24 17:58:24,232 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:58:24,270 -  * Restarting with stat
+2025-09-24 17:58:24,588 -  * Debugger is active!
+2025-09-24 17:58:24,595 -  * Debugger PIN: 108-164-468
+2025-09-24 17:59:03,180 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 17:59:03,224 -  * Restarting with stat
+2025-09-24 17:59:03,520 -  * Debugger is active!
+2025-09-24 17:59:03,525 -  * Debugger PIN: 108-164-468
+2025-09-24 18:00:16,422 - 127.0.0.1 - - [24/Sep/2025 18:00:16] "[32mGET /admin HTTP/1.1[0m" 302 -
+2025-09-24 18:00:16,445 - 127.0.0.1 - - [24/Sep/2025 18:00:16] "GET /login HTTP/1.1" 200 -
+2025-09-24 18:00:18,946 - Action: Admin login successful
+2025-09-24 18:00:18,948 - 127.0.0.1 - - [24/Sep/2025 18:00:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-24 18:00:18,963 - 127.0.0.1 - - [24/Sep/2025 18:00:18] "GET /admin HTTP/1.1" 200 -
+2025-09-24 18:00:19,203 - 127.0.0.1 - - [24/Sep/2025 18:00:19] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 18:00:20,461 - file_cache is only supported with oauth2client<4.0.0
+2025-09-24 18:00:22,703 - Action: Gmail sync added: 2025-09-24 16:30-17:30 (charter) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 18:00:22,704 - Action: Gmail sync added: 2025-09-26 13:30-14:30 (gmail) - 顧客名: 高橋 勇太 様 - 件名: hallel 予約完了メール
+2025-09-24 18:00:22,704 - Action: Gmail sync cancellation failed (not found): 2025-09-24 14:00-15:00 (gmail) - 件名: hallel 予約キャンセル
+2025-09-24 18:00:22,704 - Action: Gmail sync added: 2025-09-24 14:00-15:00 (gmail) - 顧客名: 高橋 勇太 様 - 件名: hallel 予約完了メール
+2025-09-24 18:00:22,704 - Action: Gmail sync added: 2025-09-23 17:00-18:00 (charter) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 18:00:22,704 - Action: Gmail sync added: 2025-10-04 15:00-16:00 (gmail) - 顧客名: 鵜飼 守 様 - 件名: hallel 予約完了メール
+2025-09-24 18:00:22,704 - Action: Gmail sync added: 2025-10-31 19:30-21:00 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:00:22,704 - Action: Gmail sync added: 2025-10-26 14:00-15:30 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:00:22,704 - Action: Gmail sync added: 2025-10-24 19:30-21:00 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:00:22,704 - Action: Gmail sync added: 2025-10-19 14:00-15:30 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:00:22,706 - 127.0.0.1 - - [24/Sep/2025 18:00:22] "POST /api/gmail/sync HTTP/1.1" 200 -
+2025-09-24 18:00:24,729 - 127.0.0.1 - - [24/Sep/2025 18:00:24] "GET /admin HTTP/1.1" 200 -
+2025-09-24 18:00:24,791 - 127.0.0.1 - - [24/Sep/2025 18:00:24] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 18:01:28,416 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-24 18:01:28,483 -  * Restarting with stat
+2025-09-24 18:01:28,844 -  * Debugger is active!
+2025-09-24 18:01:28,851 -  * Debugger PIN: 108-164-468
+2025-09-24 18:02:52,643 - 127.0.0.1 - - [24/Sep/2025 18:02:52] "[31m[1mPOST /api/gmail/sync HTTP/1.1[0m" 401 -
+2025-09-24 18:03:01,292 - 127.0.0.1 - - [24/Sep/2025 18:03:01] "[32mGET /admin HTTP/1.1[0m" 302 -
+2025-09-24 18:03:01,310 - 127.0.0.1 - - [24/Sep/2025 18:03:01] "GET /login HTTP/1.1" 200 -
+2025-09-24 18:03:03,583 - Action: Admin login successful
+2025-09-24 18:03:03,584 - 127.0.0.1 - - [24/Sep/2025 18:03:03] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-24 18:03:03,595 - 127.0.0.1 - - [24/Sep/2025 18:03:03] "GET /admin HTTP/1.1" 200 -
+2025-09-24 18:03:03,662 - 127.0.0.1 - - [24/Sep/2025 18:03:03] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 18:03:04,787 - file_cache is only supported with oauth2client<4.0.0
+2025-09-24 18:03:07,140 - Action: Gmail sync added: 2025-09-24 16:30-17:30 (charter) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 18:03:07,140 - Action: Gmail sync added: 2025-09-26 13:30-14:30 (gmail) - 顧客名: 高橋 勇太 様 - 件名: hallel 予約完了メール
+2025-09-24 18:03:07,140 - Action: Gmail sync cancellation failed (not found): 2025-09-24 14:00-15:00 (gmail) - 件名: hallel 予約キャンセル
+2025-09-24 18:03:07,140 - Action: Gmail sync added: 2025-09-24 14:00-15:00 (gmail) - 顧客名: 高橋 勇太 様 - 件名: hallel 予約完了メール
+2025-09-24 18:03:07,140 - Action: Gmail sync added: 2025-09-23 17:00-18:00 (charter) - 顧客名: N/A - 件名: hallel 予約完了メール
+2025-09-24 18:03:07,140 - Action: Gmail sync added: 2025-10-04 15:00-16:00 (gmail) - 顧客名: 鵜飼 守 様 - 件名: hallel 予約完了メール
+2025-09-24 18:03:07,140 - Action: Gmail sync added: 2025-10-31 19:30-21:00 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:03:07,140 - Action: Gmail sync added: 2025-10-26 14:00-15:30 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:03:07,140 - Action: Gmail sync added: 2025-10-24 19:30-21:00 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:03:07,140 - Action: Gmail sync added: 2025-10-19 14:00-15:30 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:03:07,140 - 127.0.0.1 - - [24/Sep/2025 18:03:07] "POST /api/gmail/sync HTTP/1.1" 200 -
+2025-09-24 18:03:09,164 - 127.0.0.1 - - [24/Sep/2025 18:03:09] "GET /admin HTTP/1.1" 200 -
+2025-09-24 18:03:09,228 - 127.0.0.1 - - [24/Sep/2025 18:03:09] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 18:04:16,084 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 18:04:16,141 -  * Restarting with stat
+2025-09-24 18:04:16,476 -  * Debugger is active!
+2025-09-24 18:04:16,482 -  * Debugger PIN: 108-164-468
+2025-09-24 18:04:21,994 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/gmail_parser.py', reloading
+2025-09-24 18:04:22,028 -  * Restarting with stat
+2025-09-24 18:04:22,249 -  * Debugger is active!
+2025-09-24 18:04:22,254 -  * Debugger PIN: 108-164-468
+2025-09-24 18:05:15,153 - 127.0.0.1 - - [24/Sep/2025 18:05:15] "[32mGET /admin HTTP/1.1[0m" 302 -
+2025-09-24 18:05:15,169 - 127.0.0.1 - - [24/Sep/2025 18:05:15] "GET /login HTTP/1.1" 200 -
+2025-09-24 18:05:17,188 - Action: Admin login successful
+2025-09-24 18:05:17,189 - 127.0.0.1 - - [24/Sep/2025 18:05:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-24 18:05:17,200 - 127.0.0.1 - - [24/Sep/2025 18:05:17] "GET /admin HTTP/1.1" 200 -
+2025-09-24 18:05:17,271 - 127.0.0.1 - - [24/Sep/2025 18:05:17] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-24 18:05:27,132 - file_cache is only supported with oauth2client<4.0.0
+2025-09-24 18:05:29,269 - Action: Gmail sync added: 2025-09-24 16:30-17:30 (charter) - 顧客名: WANG YANG 様 - 件名: hallel 予約完了メール
+2025-09-24 18:05:29,270 - Action: Gmail sync added: 2025-09-26 13:30-14:30 (gmail) - 顧客名: 高橋 勇太 様 - 件名: hallel 予約完了メール
+2025-09-24 18:05:29,270 - Action: Gmail sync cancellation failed (not found): 2025-09-24 14:00-15:00 (gmail) - 件名: hallel 予約キャンセル
+2025-09-24 18:05:29,270 - Action: Gmail sync added: 2025-09-24 14:00-15:00 (gmail) - 顧客名: 高橋 勇太 様 - 件名: hallel 予約完了メール
+2025-09-24 18:05:29,270 - Action: Gmail sync added: 2025-09-23 17:00-18:00 (charter) - 顧客名: WANG YANG 様 - 件名: hallel 予約完了メール
+2025-09-24 18:05:29,270 - Action: Gmail sync added: 2025-10-04 15:00-16:00 (gmail) - 顧客名: 鵜飼 守 様 - 件名: hallel 予約完了メール
+2025-09-24 18:05:29,270 - Action: Gmail sync added: 2025-10-31 19:30-21:00 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:05:29,270 - Action: Gmail sync added: 2025-10-26 14:00-15:30 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:05:29,270 - Action: Gmail sync added: 2025-10-24 19:30-21:00 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:05:29,270 - Action: Gmail sync added: 2025-10-19 14:00-15:30 (gmail) - 顧客名: 楊 晶 様 - 件名: hallel 予約完了メール
+2025-09-24 18:05:29,271 - 127.0.0.1 - - [24/Sep/2025 18:05:29] "POST /api/gmail/sync HTTP/1.1" 200 -
+2025-09-24 18:05:31,300 - 127.0.0.1 - - [24/Sep/2025 18:05:31] "GET /admin HTTP/1.1" 200 -
+2025-09-24 18:05:31,371 - 127.0.0.1 - - [24/Sep/2025 18:05:31] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-25 17:28:56,528 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-25 17:28:56,719 -  * Restarting with stat
+2025-09-25 17:28:57,232 -  * Debugger is active!
+2025-09-25 17:28:57,240 -  * Debugger PIN: 108-164-468
+2025-09-25 17:29:16,272 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-25 17:29:16,410 -  * Restarting with stat
+2025-09-25 17:29:17,441 -  * Debugger is active!
+2025-09-25 17:29:17,458 -  * Debugger PIN: 108-164-468
+2025-09-25 17:29:23,687 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-25 17:29:23,919 -  * Restarting with stat
+2025-09-25 17:29:24,616 -  * Debugger is active!
+2025-09-25 17:29:24,624 -  * Debugger PIN: 108-164-468
+2025-09-25 17:30:42,859 - 127.0.0.1 - - [25/Sep/2025 17:30:42] "GET /login HTTP/1.1" 200 -
+2025-09-25 17:30:43,961 - 127.0.0.1 - - [25/Sep/2025 17:30:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-25 17:31:41,419 - Action: Admin login successful
+2025-09-25 17:31:41,424 - 127.0.0.1 - - [25/Sep/2025 17:31:41] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-25 17:31:41,439 - 127.0.0.1 - - [25/Sep/2025 17:31:41] "GET /admin HTTP/1.1" 200 -
+2025-09-25 17:31:41,554 - 127.0.0.1 - - [25/Sep/2025 17:31:41] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-25 17:47:33,400 - ====== WebDriver manager ======
+2025-09-25 17:47:35,433 - Get LATEST chromedriver version for google-chrome
+2025-09-25 17:47:36,000 - Get LATEST chromedriver version for google-chrome
+2025-09-25 17:47:36,214 - There is no [mac64] chromedriver "91.0.4472.101" for browser google-chrome "91.0.4472" in cache
+2025-09-25 17:47:36,224 - Get LATEST chromedriver version for google-chrome
+2025-09-25 17:47:36,460 - About to download new driver from https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_mac64_m1.zip
+2025-09-25 17:47:37,073 - Driver downloading response is 200
+2025-09-25 17:47:40,887 - Get LATEST chromedriver version for google-chrome
+2025-09-25 17:47:41,394 - Driver has been saved in cache [/Users/aceboy/.wdm/drivers/chromedriver/mac64/91.0.4472.101]
+2025-09-25 17:47:45,561 - WebDriver セットアップ完了
+2025-09-25 17:47:45,561 - hacomonoにログイン中...
+2025-09-25 17:48:04,933 - ログイン失敗: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001023f0fa8 chromedriver + 2559912
+1   chromedriver                        0x000000010297db6c chromedriver + 8379244
+2   chromedriver                        0x00000001021a61e0 chromedriver + 156128
+3   chromedriver                        0x00000001021d4b48 chromedriver + 346952
+4   chromedriver                        0x00000001021fce5c chromedriver + 511580
+5   chromedriver                        0x00000001021ca140 chromedriver + 303424
+6   chromedriver                        0x00000001023bc63c chromedriver + 2344508
+7   chromedriver                        0x00000001023cd214 chromedriver + 2413076
+8   chromedriver                        0x00000001023a34e4 chromedriver + 2241764
+9   chromedriver                        0x00000001023ce34c chromedriver + 2417484
+10  chromedriver                        0x00000001023b35f4 chromedriver + 2307572
+11  chromedriver                        0x00000001023e5954 chromedriver + 2513236
+12  chromedriver                        0x00000001023e5acc chromedriver + 2513612
+13  chromedriver                        0x00000001023f5898 chromedriver + 2578584
+14  libsystem_pthread.dylib             0x000000018b3e4c08 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018b3dfba8 thread_start + 8
+
+2025-09-25 17:48:08,205 - WebDriver クリーンアップ完了
+2025-09-25 17:48:08,504 - 127.0.0.1 - - [25/Sep/2025 17:48:08] "POST /api/hacomono/sync HTTP/1.1" 200 -
+2025-09-25 17:48:10,946 - 127.0.0.1 - - [25/Sep/2025 17:48:10] "GET /admin HTTP/1.1" 200 -
+2025-09-25 17:48:11,222 - 127.0.0.1 - - [25/Sep/2025 17:48:11] "GET /api/reservations/detailed HTTP/1.1" 200 -
+2025-09-25 17:49:24,327 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/hacomono_scraper.py', reloading
+2025-09-25 17:49:24,579 -  * Restarting with stat
+2025-09-25 17:49:25,074 -  * Debugger is active!
+2025-09-25 17:49:25,081 -  * Debugger PIN: 108-164-468
+2025-09-25 17:49:39,731 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/hacomono_scraper.py', reloading
+2025-09-25 17:49:39,775 -  * Restarting with stat
+2025-09-25 17:49:40,139 -  * Debugger is active!
+2025-09-25 17:49:40,145 -  * Debugger PIN: 108-164-468
+2025-09-25 17:49:49,616 -  * Detected change in '/Users/aceboy/hallel_hanzomon_booking/app.py', reloading
+2025-09-25 17:49:49,667 -  * Restarting with stat
+2025-09-25 17:49:50,041 -  * Debugger is active!
+2025-09-25 17:49:50,046 -  * Debugger PIN: 108-164-468

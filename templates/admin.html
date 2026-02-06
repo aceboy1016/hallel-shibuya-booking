@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者ダッシュボード</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --dark-card-bg: #222222;
+            --light-text: #e0e0e0;
+            --medium-text: #b0b0b0;
+            --border-color: #333333;
+            --accent-color: #ffffff; /* White for HALLEL logo style */
+            --font-family: 'Oswald', sans-serif;
+        }
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            font-family: var(--font-family);
+            line-height: 1.6;
+        }
+        .card {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            background-color: var(--dark-card-bg);
+        }
+        .card-header {
+            background-color: var(--dark-bg);
+            color: var(--accent-color);
+            font-weight: 600;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .log-container {
+            height: 300px;
+            background-color: #111111; /* Even darker background for logs */
+            color: #e0e0e0;
+            font-family: 'Oswald', monospace;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-y: scroll;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-break: break-all; /* Break long words */
+            border: 1px solid var(--border-color);
+        }
+        .log-entry {
+            padding: 0.2rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        .log-entry:hover {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 0.25rem;
+        }
+        .navbar {
+            background-color: var(--dark-bg) !important;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar-brand {
+            font-weight: 600;
+            color: var(--accent-color) !important;
+            letter-spacing: 0.05em;
+        }
+        .navbar-nav .nav-link {
+            color: var(--medium-text) !important;
+            transition: all 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+        .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--dark-bg);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--medium-text);
+            border-color: var(--medium-text);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: var(--dark-bg);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #e0a800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .btn-outline-light {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-light:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .form-label {
+            color: var(--medium-text);
+        }
+        .form-control, textarea.form-control {
+            background-color: var(--dark-bg);
+            border: 1px solid var(--border-color);
+            color: var(--light-text);
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, textarea.form-control:focus {
+            background-color: var(--dark-bg);
+            border-color: var(--accent-color);
+            color: var(--light-text);
+            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+        }
+        .alert {
+            color: var(--dark-bg);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/admin">管理者ダッシュボード</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/calendar" target="_blank">編集カレンダー</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/" target="_blank">閲覧カレンダー</a>
+                    </li>
+                </ul>
+                <a href="/logout" class="btn btn-outline-light">ログアウト</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">パスワード変更</div>
+                    <div class="card-body">
+                        <form method="POST" action="/admin/change_password">
+                            <div class="mb-3">
+                                <label for="new_password" class="form-label">新しいパスワード</label>
+                                <input type="password" class="form-control" id="new_password" name="new_password" required minlength="8">
+                                <div class="form-text">8文字以上で入力してください。</div>
+                            </div>
+                            <button type="submit" class="btn btn-warning">パスワードを変更</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gmail Sync Section -->
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header">Gmail 予約同期</div>
+                    <div class="card-body">
+                        <p class="card-text">Gmailから新しい予約メールを自動取得・解析して予約システムに反映します。</p>
+                        <button type="button" class="btn btn-primary" id="sync-gmail-btn">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            Gmail同期を実行
+                        </button>
+                        <div id="sync-status" class="mt-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hacomono Sync Section -->
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header">hacomono 予約同期</div>
+                    <div class="card-body">
+                        <p class="card-text">hacomonoから予約枠・ブロック情報を自動取得して反映します。</p>
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <input type="email" class="form-control form-control-sm" id="hacomono-email" placeholder="hacomonoメールアドレス">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <input type="password" class="form-control form-control-sm" id="hacomono-password" placeholder="パスワード">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <select class="form-control form-control-sm" id="hacomono-store">
+                                    <option value="半蔵門店">半蔵門店</option>
+                                    <option value="渋谷店">渋谷店</option>
+                                    <option value="新宿店">新宿店</option>
+                                    <option value="池袋店">池袋店</option>
+                                    <option value="銀座店">銀座店</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-info" id="sync-hacomono-btn">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            hacomono同期を実行
+                        </button>
+                        <div id="hacomono-sync-status" class="mt-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual Reservation Section -->
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header">手動予約追加</div>
+                    <div class="card-body">
+                        <form id="manual-reservation-form">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="reservation-date" class="form-label">予約日</label>
+                                    <input type="date" class="form-control" id="reservation-date" name="date" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="reservation-type" class="form-label">予約タイプ</label>
+                                    <select class="form-control" id="reservation-type" name="type" required>
+                                        <option value="gmail">通常予約</option>
+                                        <option value="charter">貸切予約</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="start-time" class="form-label">開始時間</label>
+                                    <input type="time" class="form-control" id="start-time" name="start" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="end-time" class="form-label">終了時間</label>
+                                    <input type="time" class="form-control" id="end-time" name="end" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">予約を追加</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Activity Log -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>📧 予約メール判別ログ (7枠制限対応)</span>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-light btn-sm" id="refresh-logs-btn">
+                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                更新
+                            </button>
+                            <button type="button" class="btn btn-outline-warning btn-sm" id="export-logs-btn">
+                                エクスポート
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-sm" id="clear-logs-btn">
+                                クリア
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Manual Log Entry -->
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="manual-log-input"
+                                       placeholder="予約判別に関するメモを追加..." maxlength="200">
+                                <button class="btn btn-primary" type="button" id="add-log-btn">追加</button>
+                            </div>
+                        </div>
+
+                        <!-- Log Display -->
+                        <div class="log-container" id="log-container">
+                            {% if logs %}
+                                {% for log in logs %}
+                                    <div class="log-entry">{{ log.strip() }}</div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="text-muted">ログはまだありません。</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reservation Details Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>現在の予約一覧</span>
+                        <button type="button" class="btn btn-outline-light btn-sm" id="refresh-reservations-btn">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            更新
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="reservations-container">
+                            <div class="text-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <div>予約データを読み込み中...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Gmail Sync functionality
+        document.getElementById('sync-gmail-btn').addEventListener('click', function() {
+            const btn = this;
+            const statusDiv = document.getElementById('sync-status');
+
+            // Show loading state
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 同期中...';
+
+            fetch('/api/gmail/sync', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    statusDiv.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+                } else {
+                    statusDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                    // Refresh page after successful sync to show updated logs
+                    setTimeout(() => location.reload(), 2000);
+                }
+            })
+            .catch(error => {
+                statusDiv.innerHTML = `<div class="alert alert-danger">同期エラー: ${error.message}</div>`;
+            })
+            .finally(() => {
+                // Reset button state
+                btn.disabled = false;
+                btn.innerHTML = 'Gmail同期を実行';
+            });
+        });
+
+        // Hacomono Sync functionality
+        document.getElementById('sync-hacomono-btn').addEventListener('click', function() {
+            const btn = this;
+            const statusDiv = document.getElementById('hacomono-sync-status');
+            const emailInput = document.getElementById('hacomono-email');
+            const passwordInput = document.getElementById('hacomono-password');
+            const storeSelect = document.getElementById('hacomono-store');
+
+            // Validate inputs
+            if (!emailInput.value || !passwordInput.value) {
+                statusDiv.innerHTML = '<div class="alert alert-warning">hacomonoのメールアドレスとパスワードを入力してください</div>';
+                return;
+            }
+
+            // Set loading state
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 同期中...';
+            statusDiv.innerHTML = `<div class="alert alert-info">${storeSelect.value}から予約情報を取得中...</div>`;
+
+            fetch('/api/hacomono/sync', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: emailInput.value,
+                    password: passwordInput.value,
+                    store_name: storeSelect.value,
+                    days: 7  // 7日間分を取得
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    statusDiv.innerHTML = `<div class="alert alert-danger">エラー: ${data.error}</div>`;
+                } else {
+                    statusDiv.innerHTML = `<div class="alert alert-success">${data.message}<br><small>${data.details}</small></div>`;
+                    // Clear password for security
+                    passwordInput.value = '';
+                    // Refresh page after successful sync
+                    setTimeout(() => location.reload(), 2000);
+                }
+            })
+            .catch(error => {
+                statusDiv.innerHTML = `<div class="alert alert-danger">同期エラー: ${error.message}</div>`;
+            })
+            .finally(() => {
+                // Reset button state
+                btn.disabled = false;
+                btn.innerHTML = 'hacomono同期を実行';
+            });
+        });
+
+        // Manual Reservation functionality
+        document.getElementById('manual-reservation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const reservationData = {
+                date: formData.get('date'),
+                type: formData.get('type'),
+                start: formData.get('start'),
+                end: formData.get('end'),
+                group: 1 // Default group
+            };
+
+            fetch('/api/reservations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(reservationData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert('予約追加エラー: ' + data.error);
+                } else {
+                    alert('予約が正常に追加されました: ' + data.message);
+                    this.reset();
+                    location.reload(); // Refresh to show updated logs
+                }
+            })
+            .catch(error => {
+                alert('予約追加エラー: ' + error.message);
+            });
+        });
+
+        // Set today's date as default
+        document.getElementById('reservation-date').valueAsDate = new Date();
+
+        // Load reservations on page load
+        loadReservations();
+
+        // Refresh reservations functionality
+        document.getElementById('refresh-reservations-btn').addEventListener('click', function() {
+            const btn = this;
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 更新中...';
+
+            loadReservations().finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = '予約を更新';
+            });
+        });
+
+        function loadReservations() {
+            return fetch('/api/reservations/detailed')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById('reservations-container').innerHTML =
+                            `<div class="alert alert-danger">${data.error}</div>`;
+                        return;
+                    }
+
+                    const reservations = data.reservations || [];
+                    const container = document.getElementById('reservations-container');
+
+                    if (reservations.length === 0) {
+                        container.innerHTML = '<div class="text-muted">現在予約はありません。</div>';
+                        return;
+                    }
+
+                    // Group by date
+                    const groupedByDate = {};
+                    reservations.forEach(reservation => {
+                        if (!groupedByDate[reservation.date]) {
+                            groupedByDate[reservation.date] = [];
+                        }
+                        groupedByDate[reservation.date].push(reservation);
+                    });
+
+                    // 今日以降の予約数を計算
+                    const today = new Date().toISOString().split('T')[0];
+                    const upcomingReservations = reservations.filter(r => r.date >= today);
+                    const charterCount = reservations.filter(r => r.type === 'charter').length;
+                    const gmailCount = reservations.filter(r => r.type === 'gmail').length;
+
+                    let html = `
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body text-center">
+                                        <h3>${reservations.length}</h3>
+                                        <p class="mb-0">総予約数</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body text-center">
+                                        <h3>${upcomingReservations.length}</h3>
+                                        <p class="mb-0">今後の予約</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-warning text-dark">
+                                    <div class="card-body text-center">
+                                        <h3>🏢 ${charterCount}</h3>
+                                        <p class="mb-0">貸切予約</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-info text-white">
+                                    <div class="card-body text-center">
+                                        <h3>👥 ${gmailCount}</h3>
+                                        <p class="mb-0">通常予約</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    Object.keys(groupedByDate).sort().forEach(date => {
+                        const dateReservations = groupedByDate[date];
+                        const formattedDate = new Date(date + 'T00:00:00').toLocaleDateString('ja-JP', {
+                            year: 'numeric', month: 'long', day: 'numeric', weekday: 'short'
+                        });
+
+                        const isToday = date === new Date().toISOString().split('T')[0];
+                        const dateHeaderClass = isToday ? 'text-warning' : 'text-primary';
+                        const dateHeaderIcon = isToday ? '📅 今日' : '📅';
+
+                        html += `
+                            <div class="mb-4">
+                                <h4 class="${dateHeaderClass}">
+                                    ${dateHeaderIcon} ${formattedDate}
+                                    <span class="badge bg-secondary ms-2">${dateReservations.length}件</span>
+                                </h4>
+                                <div class="row">
+                        `;
+
+                        dateReservations.forEach(reservation => {
+                            const typeClass = reservation.type === 'charter' ? 'warning' : 'info';
+                            const sourceClass = reservation.source === 'gmail_auto' ? 'success' : 'secondary';
+                            const typeIcon = reservation.type === 'charter' ? '🏢' : '👥';
+                            const sourceIcon = reservation.source === 'gmail_auto' ? '✉️' : '✍️';
+
+                            // 顧客名を優先的に表示、なければ送信者から抽出
+                            let customerName = reservation.customer_name;
+                            if (customerName === 'N/A' || !customerName) {
+                                if (reservation.sender !== 'N/A' && reservation.sender.includes('<')) {
+                                    const match = reservation.sender.match(/^(.+?)\s*</);
+                                    customerName = match ? match[1].trim() : reservation.sender;
+                                } else {
+                                    customerName = reservation.sender;
+                                }
+                            }
+
+                            html += `
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <div class="card h-100 border-${typeClass}" style="background-color: var(--dark-card-bg);">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                                <h5 class="card-title text-light mb-0">
+                                                    ${typeIcon} ${reservation.start} - ${reservation.end}
+                                                </h5>
+                                                <div class="text-end">
+                                                    <span class="badge bg-${typeClass} mb-1">${reservation.type_display}</span><br>
+                                                    <span class="badge bg-${sourceClass}">${sourceIcon} ${reservation.source_display}</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-light small">
+                                                <div class="mb-2"><strong>📍 グループ ${reservation.group}</strong></div>
+                                                ${customerName !== 'N/A' && customerName ? `<div class="mb-1"><strong>👤 ${customerName}</strong></div>` : ''}
+                                                ${reservation.email_subject !== 'N/A' ? `<div class="text-muted small"><strong>件名:</strong> ${reservation.email_subject.length > 30 ? reservation.email_subject.substring(0, 30) + '...' : reservation.email_subject}</div>` : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        html += '</div></div>';
+                    });
+
+                    container.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading reservations:', error);
+                    document.getElementById('reservations-container').innerHTML =
+                        `<div class="alert alert-danger">予約データの読み込みに失敗しました: ${error.message}</div>`;
+                });
+        }
+
+        // === Log Management Functions ===
+        function refreshLogs() {
+            const refreshBtn = document.getElementById('refresh-logs-btn');
+
+            refreshBtn.disabled = true;
+            refreshBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 更新中...';
+
+            fetch('/api/logs')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('log-container');
+                    if (data.logs && data.logs.length > 0) {
+                        container.innerHTML = data.logs.map(log =>
+                            `<div class="log-entry">${log}</div>`
+                        ).join('');
+                        // スクロールを最下部に
+                        container.scrollTop = container.scrollHeight;
+                    } else {
+                        container.innerHTML = '<div class="text-muted">ログはまだありません。</div>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error refreshing logs:', error);
+                    alert('ログの更新に失敗しました');
+                })
+                .finally(() => {
+                    refreshBtn.disabled = false;
+                    refreshBtn.innerHTML = 'ログを更新';
+                });
+        }
+
+        function addManualLog() {
+            const input = document.getElementById('manual-log-input');
+            const message = input.value.trim();
+
+            if (!message) {
+                alert('ログメッセージを入力してください');
+                return;
+            }
+
+            fetch('/api/logs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    input.value = '';
+                    refreshLogs(); // ログを更新
+                    showSuccessMessage('ログが追加されました');
+                } else {
+                    alert(data.error || 'ログの追加に失敗しました');
+                }
+            })
+            .catch(error => {
+                console.error('Error adding log:', error);
+                alert('ログの追加に失敗しました');
+            });
+        }
+
+        function clearLogs() {
+            if (!confirm('すべてのログをクリアしますか？この操作は取り消せません。')) {
+                return;
+            }
+
+            fetch('/api/logs/clear', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    refreshLogs(); // ログを更新
+                    showSuccessMessage(data.message);
+                } else {
+                    alert(data.error || 'ログのクリアに失敗しました');
+                }
+            })
+            .catch(error => {
+                console.error('Error clearing logs:', error);
+                alert('ログのクリアに失敗しました');
+            });
+        }
+
+        function exportLogs() {
+            window.location.href = '/api/logs/export';
+        }
+
+        function showSuccessMessage(message) {
+            // 一時的な成功メッセージを表示
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-success alert-dismissible fade show';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+            const container = document.querySelector('.container');
+            container.insertBefore(alertDiv, container.firstChild);
+
+            // 3秒後に自動で消去
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 3000);
+        }
+
+        // Event Listeners for Log Management
+        document.getElementById('refresh-logs-btn').addEventListener('click', refreshLogs);
+        document.getElementById('add-log-btn').addEventListener('click', addManualLog);
+        document.getElementById('clear-logs-btn').addEventListener('click', clearLogs);
+        document.getElementById('export-logs-btn').addEventListener('click', exportLogs);
+
+        // Enter key for manual log input
+        document.getElementById('manual-log-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addManualLog();
+            }
+        });
+
+        // Auto-refresh logs every 30 seconds
+        setInterval(refreshLogs, 30000);
+    </script>
+</body>
+</html>

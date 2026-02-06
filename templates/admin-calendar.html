@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALLEL 渋谷店 予約状況 (管理者用)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --dark-card-bg: #222222;
+            --light-text: #e0e0e0;
+            --medium-text: #b0b0b0;
+            --border-color: #333333;
+            --accent-color: #ffffff; /* White for HALLEL logo style */
+            --font-family: 'Oswald', sans-serif;
+
+            /* Status Colors on Dark Background */
+            --status-available: #28a745; /* Green */
+            --status-warning: #ffc107; /* Yellow */
+            --status-danger: #dc3545; /* Red */
+            --status-charter: #6c757d; /* Grey */
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            font-family: var(--font-family);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            padding: 0 15px;
+        }
+
+        .header {
+            background-color: var(--dark-bg);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-weight: 600;
+            color: var(--accent-color);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 .badge {
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+            vertical-align: middle;
+            margin-left: 10px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--light-text);
+        }
+
+        .date-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .date-controls .btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--light-text);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .date-controls .btn:hover {
+            background-color: var(--border-color);
+            color: var(--accent-color);
+        }
+
+        #date-picker {
+            background-color: var(--dark-card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--light-text);
+            border-radius: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            text-align: center;
+        }
+
+        #date-picker::-webkit-calendar-picker-indicator {
+            filter: invert(1); /* Make calendar icon white */
+        }
+
+        .lead {
+            color: var(--medium-text);
+            font-size: 1.1rem;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--medium-text);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+        }
+
+        .timeline {
+            list-style: none;
+            padding: 0;
+            border-radius: 0.75rem;
+            background-color: var(--dark-card-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .time-slot {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .time-slot:last-child {
+            border-bottom: none;
+        }
+
+        .time-slot:hover {
+            background-color: #333333;
+        }
+
+        .time-label {
+            font-weight: 500;
+            width: 100px;
+            flex-shrink: 0;
+            color: var(--light-text);
+        }
+
+        .lead, #current-date {
+            color: var(--light-text) !important;
+        }
+
+        .occupancy-bar {
+            flex-grow: 1;
+            height: 24px;
+            background-color: #333333;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .occupancy-fill {
+            height: 100%;
+            transition: width 0.5s ease, background-color 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-bg);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .occupancy-text {
+            width: 90px;
+            text-align: right;
+            font-weight: 500;
+            flex-shrink: 0;
+            color: var(--medium-text);
+        }
+
+        /* Custom Status Colors */
+        .bg-success { background-color: var(--status-available) !important; color: var(--dark-bg); }
+        .bg-warning { background-color: var(--status-warning) !important; color: var(--dark-bg); }
+        .bg-danger { background-color: var(--status-danger) !important; color: var(--dark-bg); }
+        .bg-dark { background-color: var(--status-charter) !important; color: var(--light-text); }
+
+        /* Modal Customization */
+        .modal-content {
+            border-radius: 0.75rem;
+            border: none;
+            background-color: var(--dark-card-bg);
+            color: var(--light-text);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .modal-header {
+            background-color: var(--dark-bg);
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .modal-header .btn-close {
+            filter: invert(1); /* Make close button white */
+        }
+        .modal-title {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        .modal-body .form-label {
+            color: var(--medium-text);
+        }
+        .modal-body .form-control, .modal-body .form-select {
+            background-color: var(--dark-bg);
+            border: 1px solid var(--border-color);
+            color: var(--light-text);
+        }
+        .modal-body .form-control:focus, .modal-body .form-select:focus {
+            background-color: var(--dark-bg);
+            border-color: var(--accent-color);
+            color: var(--light-text);
+            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+        }
+        .modal-footer {
+            border-top: 1px solid var(--border-color);
+            background-color: var(--dark-card-bg);
+        }
+        .modal-footer .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--dark-bg);
+        }
+        .btn-primary:hover {
+            background-color: var(--medium-text);
+            border-color: var(--medium-text);
+            color: var(--dark-bg);
+        }
+        .btn-secondary {
+            background-color: var(--border-color);
+            border-color: var(--border-color);
+            color: var(--light-text);
+        }
+        .btn-secondary:hover {
+            background-color: var(--medium-text);
+            border-color: var(--medium-text);
+            color: var(--dark-bg);
+        }
+        .list-group-item {
+            background-color: var(--dark-bg);
+            border-color: var(--border-color);
+            color: var(--light-text);
+        }
+        .list-group-item strong {
+            color: var(--accent-color);
+        }
+        .list-group-item small {
+            color: var(--medium-text) !important;
+        }
+        .btn-outline-danger {
+            color: var(--status-danger);
+            border-color: var(--status-danger);
+        }
+        .btn-outline-danger:hover {
+            background-color: var(--status-danger);
+            color: var(--light-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <header class="header">
+            <h1>HALLEL 渋谷店 予約状況 <span class="badge bg-success">管理者用</span></h1>
+            <div class="date-controls">
+                <button id="prev-day" class="btn">‹</button>
+                <input type="date" id="date-picker" class="form-control">
+                <button id="next-day" class="btn">›</button>
+            </div>
+            <p class="lead mt-2 mb-0" id="current-date"></p>
+        </header>
+
+        <ul class="timeline" id="timeline">
+            <!-- Time slots will be generated by JavaScript -->
+        </ul>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="booking-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" role="switch" id="charter-switch">
+                        <label class="form-check-label" for="charter-switch">これを貸切予約にする</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="booking-duration" class="form-label">利用時間</label>
+                        <select id="booking-duration" class="form-select">
+                            <option value="30">30分</option>
+                            <option value="60">60分</option>
+                            <option value="90">90分</option>
+                            <option value="120">120分</option>
+                            <option value="180">180分</option>
+                            <option value="240">240分</option>
+                        </select>
+                    </div>
+                    <div class="d-grid">
+                        <button type="button" id="save-booking" class="btn btn-primary">予約を登録する</button>
+                    </div>
+                    <hr class="my-4">
+                    <div id="existing-bookings"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const MAX_CAPACITY = 7;
+            const timeline = document.getElementById('timeline');
+            const currentDateEl = document.getElementById('current-date');
+            const datePicker = document.getElementById('date-picker');
+            const prevDayBtn = document.getElementById('prev-day');
+            const nextDayBtn = document.getElementById('next-day');
+            const bookingModal = new bootstrap.Modal(document.getElementById('booking-modal'));
+            const modalTitle = document.getElementById('modal-title');
+            const bookingDurationSelect = document.getElementById('booking-duration');
+            const saveBookingBtn = document.getElementById('save-booking');
+            const existingBookingsEl = document.getElementById('existing-bookings');
+            const charterSwitch = document.getElementById('charter-switch');
+
+            let savedDate = localStorage.getItem('hallel-booking-date');
+            let currentDate = savedDate ? new Date(savedDate) : new Date();
+            currentDate.setHours(0, 0, 0, 0); // Normalize time
+
+            let selectedSlot = null;
+            let reservationsByDate = {};
+
+            function timeToMinutes(time) {
+                const [hours, minutes] = time.split(':').map(Number);
+                return hours * 60 + minutes;
+            }
+
+            function formatDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+
+            async function fetchReservations() {
+                const response = await fetch('/api/reservations');
+                reservationsByDate = await response.json();
+                renderTimeline(currentDate);
+            }
+
+            function renderTimeline(date) {
+                const dateString = formatDate(date);
+                const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][date.getDay()];
+                currentDateEl.textContent = `${dateString} (${dayOfWeek})`;
+                datePicker.value = dateString;
+
+                const reservations = reservationsByDate[dateString] || [];
+
+                const timeSlots = [];
+                for (let h = 0; h < 24; h++) {
+                    for (let m = 0; m < 60; m += 30) {
+                        const startTime = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+                        timeSlots.push({ timeLabel: `${startTime} - ...`, start: startTime, count: 0, isCharter: false });
+                    }
+                }
+
+                timeSlots.forEach(slot => {
+                    const slotStart = timeToMinutes(slot.start);
+                    const slotEnd = slotStart + 30;
+                    reservations.forEach(res => {
+                        const resStart = timeToMinutes(res.start);
+                        const resEnd = timeToMinutes(res.end);
+                        if (Math.max(slotStart, resStart) < Math.min(slotEnd, resEnd)) {
+                            if(res.type === 'charter') {
+                                slot.isCharter = true;
+                            } else {
+                                slot.count++;
+                            }
+                        }
+                    });
+                });
+
+                let html = '';
+                timeSlots.forEach(slot => {
+                    let percentage = (slot.count / MAX_CAPACITY) * 100;
+                    let colorClass = 'bg-success';
+                    let label = `${slot.count} / ${MAX_CAPACITY}`;
+
+                    if (slot.isCharter) {
+                        percentage = 100;
+                        colorClass = 'bg-dark';
+                        label = '貸切';
+                    } else if (percentage >= 70) {
+                        colorClass = 'bg-danger';
+                    } else if (percentage >= 40) {
+                        colorClass = 'bg-warning';
+                    }
+
+                    html += `
+                        <li class="time-slot" data-start="${slot.start}">
+                            <div class="time-label">${slot.start}</div>
+                            <div class="occupancy-bar">
+                                <div class="occupancy-fill ${colorClass}" style="width: ${percentage}%;">
+                                    ${slot.isCharter ? '' : (slot.count > 0 ? slot.count : '')}
+                                </div>
+                            </div>
+                            <div class="occupancy-text">${label}</div>
+                        </li>
+                    `;
+                });
+
+                timeline.innerHTML = html;
+                addSlotClickListeners();
+            }
+
+            function addSlotClickListeners() {
+                document.querySelectorAll('.time-slot').forEach(slotEl => {
+                    slotEl.addEventListener('click', () => {
+                        selectedSlot = { start: slotEl.dataset.start };
+                        modalTitle.textContent = `予約登録 @ ${formatDate(currentDate)} ${selectedSlot.start}`;
+                        charterSwitch.checked = false;
+                        showExistingBookings();
+                        bookingModal.show();
+                    });
+                });
+            }
+
+            function showExistingBookings() {
+                const dateString = formatDate(currentDate);
+                const reservations = reservationsByDate[dateString] || [];
+                const slotStart = timeToMinutes(selectedSlot.start);
+                const slotEnd = slotStart + 30;
+
+                let bookingsHtml = '<h6>この時間帯の予約</h6><ul class="list-group list-group-flush">'
+                let hasBookings = false;
+                reservations.forEach((res, index) => {
+                    const resStart = timeToMinutes(res.start);
+                    const resEnd = timeToMinutes(res.end);
+                    if (Math.max(slotStart, resStart) < Math.min(slotEnd, resEnd)) {
+                        let displayName = '';
+                        if (res.type === 'charter') {
+                            displayName = `<strong>貸切予約</strong>`;
+                        } else if (res.type === 'manual') {
+                            displayName = '手動予約';
+                        } else { // gmail
+                            displayName = '予約あり';
+                        }
+
+                        bookingsHtml += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            ${displayName}<br>
+                                            <small class="text-muted">${res.start} - ${res.end}</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-danger" data-index="${index}">削除</button>
+                                     </li>`;
+                        hasBookings = true;
+                    }
+                });
+                if (!hasBookings) {
+                    bookingsHtml += '<li class="list-group-item">この時間帯に予約はありません。</li>';
+                }
+                bookingsHtml += '</ul>';
+                existingBookingsEl.innerHTML = bookingsHtml;
+                addDeleteListeners();
+            }
+
+            async function addDeleteListeners() {
+                document.querySelectorAll('#existing-bookings .btn-outline-danger').forEach(button => {
+                    button.addEventListener('click', async (e) => {
+                        const index = e.target.dataset.index;
+                        const dateString = formatDate(currentDate);
+                        
+                        await fetch('/api/reservations/delete', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ date: dateString, index: parseInt(index) })
+                        });
+                        await fetchReservations();
+                        showExistingBookings();
+                    });
+                });
+            }
+
+            saveBookingBtn.addEventListener('click', async () => {
+                const isCharter = charterSwitch.checked;
+                const dateString = formatDate(currentDate);
+
+                const duration = parseInt(bookingDurationSelect.value, 10);
+                const [startHour, startMinute] = selectedSlot.start.split(':').map(Number);
+                const endDate = new Date();
+                endDate.setHours(startHour, startMinute + duration, 0, 0);
+                const endTime = `${String(endDate.getHours()).padStart(2, '0')}:${String(endDate.getMinutes()).padStart(2, '0')}`;
+
+                const newBooking = {
+                    date: dateString,
+                    type: isCharter ? 'charter' : 'manual',
+                    start: selectedSlot.start,
+                    end: endTime
+                };
+
+                await fetch('/api/reservations', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newBooking)
+                });
+
+                bookingModal.hide();
+                await fetchReservations();
+            });
+
+            prevDayBtn.addEventListener('click', () => {
+                currentDate.setDate(currentDate.getDate() - 1);
+                localStorage.setItem('hallel-booking-date', currentDate.toISOString());
+                renderTimeline(currentDate);
+            });
+
+            nextDayBtn.addEventListener('click', () => {
+                currentDate.setDate(currentDate.getDate() + 1);
+                localStorage.setItem('hallel-booking-date', currentDate.toISOString());
+                renderTimeline(currentDate);
+            });
+
+            datePicker.addEventListener('change', (e) => {
+                currentDate = new Date(e.target.value + 'T00:00:00');
+                localStorage.setItem('hallel-booking-date', currentDate.toISOString());
+                renderTimeline(currentDate);
+            });
+
+            fetchReservations();
+        });
+    </script>
+
+</body>
+</html>

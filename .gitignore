@@ -1,0 +1,5 @@
+.vercel
+credentials.json
+token.json
+*.json
+.env
